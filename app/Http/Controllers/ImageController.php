@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Image;
+use Illuminate\Http\Request;
+
+class ImageController extends Controller
+{
+    public function saveImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048',
+        ]);
+        $image_path = $request->file('image')->store('images');
+        //session()->flash('success', 'Image Upload successfully');
+        $image = new Image;
+        $image->path = $image_path;
+        $image->save();
+        return dump($request);
+    }
+
+}
