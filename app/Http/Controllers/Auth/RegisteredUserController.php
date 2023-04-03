@@ -48,6 +48,22 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect($this->redirectTo());
+    }
+
+    public function redirectTo() {
+        $role = Auth::user()->role;
+        switch ($role) {
+            case 'admin':
+                return '/admin_dashboard';
+                break;
+            case 'player':
+                return '/player_dashboard';
+                break;
+
+            default:
+                return '/';
+                break;
+        }
     }
 }
