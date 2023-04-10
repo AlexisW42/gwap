@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('words', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('game_id');
             $table->foreign('game_id')->references('id')->on('games')
                 ->constrained()
