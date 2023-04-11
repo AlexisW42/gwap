@@ -44,6 +44,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->boolean('ready')->default(false);
+            $table->dateTime('endTime')->nullable();
             $table->timestamps();
         });
     }
