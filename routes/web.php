@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\JoinToGameController;
 use \App\Http\Controllers\SendWordController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::view('/upload-image', 'upload-image');
+Route::get('/upload-image', function () {
+    abort_if(Auth::user()->role != 'admin', 403);
+    return view('upload-image');
+});
 Route::get('/game', [ImageController::class, 'getImages']);
 Route::post('/upload-image', [ImageController::class, 'saveImage']);
 Route::get('/test1', JoinToGameController::class);
