@@ -33,7 +33,10 @@ class JoinToGameController extends Controller
                 $game->endTime = date("Y-m-d H:i:s", $timestamp);
             }
             $game->save();
+        }elseif (sizeof($images) < 3){
+            return 'There are not enough images in server to play a game';
         }
+
         return view('test1', ['game'=>$game]);
     }
 }
