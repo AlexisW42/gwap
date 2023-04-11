@@ -25,8 +25,8 @@
 </body>
 <script>
     const images = ['{{$game->pathImage1}}',
-        '{{$game->pathImage2}}',
-        '{{$game->pathImage3}}'];
+                    '{{$game->pathImage2}}',
+                    '{{$game->pathImage3}}'];
     let time = 180;
     let image = 0
     $('#image').attr('src', `{{url('/')}}/${images[image]}`);
