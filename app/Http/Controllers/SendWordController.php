@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SendWordController extends Controller
 {
-    public function send(Request $request){
+    public function __invoke(Request $request){
         $request->validate([
             'word' => 'required|min:4|max:255',
         ]);

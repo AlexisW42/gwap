@@ -3,6 +3,8 @@
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\JoinToGameController;
+use \App\Http\Controllers\SendWordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,6 @@ require __DIR__.'/auth.php';
 Route::view('/upload-image', 'upload-image');
 Route::get('/game', [ImageController::class, 'getImages']);
 Route::post('/upload-image', [ImageController::class, 'saveImage']);
+Route::get('/test1', JoinToGameController::class);
+Route::view('/test', 'test');
+Route::post('/send-word', SendWordController::class);
