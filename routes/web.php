@@ -22,8 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->middleware('role:admin');
-Route::get('/player_dashboard', 'App\Http\Controllers\Player\DashboardController@index')->middleware('role:player');
+Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name('admin_dashboard')->middleware('role:admin');
+Route::get('/player_dashboard', 'App\Http\Controllers\Player\DashboardController@index')->name('player_dashboard')->middleware('role:player');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -43,6 +43,5 @@ Route::get('/upload-image', function () {
 });
 Route::get('/game', [ImageController::class, 'getImages']);
 Route::post('/upload-image', [ImageController::class, 'saveImage']);
-Route::get('/test1', JoinToGameController::class);
-Route::view('/test', 'test');
+Route::get('/play-game', JoinToGameController::class);
 Route::post('/send-word', SendWordController::class);

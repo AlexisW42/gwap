@@ -19,4 +19,13 @@ class ImageController extends Controller
         $image->save();
         return dump($request);
     }
+
+    public function getImages() {
+        $images = Image::inRandomOrder()->take(3)->get();
+        if (sizeof($images) >= 3) {
+            return view('game', ['images' => $images]);
+        }
+
+        return 'There are not enough images in server to play a game';
+    }
 }
