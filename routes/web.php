@@ -33,6 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/game', [ImageController::class, 'getImages']);
+    Route::post('/upload-image', [ImageController::class, 'saveImage']);
+    Route::get('/play-game', JoinToGameController::class);
+    Route::post('/send-word', SendWordController::class);
 });
 
 require __DIR__.'/auth.php';
@@ -41,7 +46,3 @@ Route::get('/upload-image', function () {
     abort_if(Auth::user()->role != 'admin', 403);
     return view('upload-image');
 });
-Route::get('/game', [ImageController::class, 'getImages']);
-Route::post('/upload-image', [ImageController::class, 'saveImage']);
-Route::get('/play-game', JoinToGameController::class);
-Route::post('/send-word', SendWordController::class);
