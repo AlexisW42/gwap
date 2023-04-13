@@ -26,7 +26,17 @@ Route::get('/admin_dashboard', 'App\Http\Controllers\Admin\DashboardController@i
 Route::get('/player_dashboard', 'App\Http\Controllers\Player\DashboardController@index')->name('player_dashboard')->middleware('role:player');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    switch($role = Auth::user()->role){
+        case 'admin':
+            return to_route('admin_dashboard');
+            break;
+        case 'player':
+            return to_route('player_dashboard');
+            break;
+        default:
+        return view('dashboard');
+    }
+    
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
