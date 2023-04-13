@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.game')
 
-        <title>Upload image</title>
-
-    </head>
-    <body>
+@section('content')
 
     <form method="POST" enctype="multipart/form-data">
         @csrf
@@ -15,8 +8,9 @@
             Upload Image <br>
         </label>
         <input type="file" name="image" id="uploadImage"><br>
-        <button type="submit">Send</button>
+        <x-primary-button class="mt-4">
+                {{ __('send') }}
+        </x-primary-button>
     </form>
 
-    </body>
-</html>
+@endsection
