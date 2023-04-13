@@ -18,7 +18,7 @@ class SendWordController extends Controller
             $word->game_id = $request->game_id;
             $word->username = Auth::user()->username;
             $word->pathImage = $request->pathImage;
-            $word->word = $request->word;
+            $word->word = strtolower($request->word);
             $word->save();
             return $request;
         }else{
