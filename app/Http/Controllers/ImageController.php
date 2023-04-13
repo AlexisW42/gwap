@@ -17,7 +17,7 @@ class ImageController extends Controller
         $image = new Image;
         $image->path = $image_path;
         $image->save();
-        return dump($request);
+        return view('admin.dashboard');
     }
 
     public function getImages() {
