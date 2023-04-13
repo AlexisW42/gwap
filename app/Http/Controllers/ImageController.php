@@ -25,7 +25,7 @@ class ImageController extends Controller
 
         return view('list-images', ['images'=>$imagesAndWords]);
     }
-    public function saveImage(Request $request) {
+    public function store(Request $request) {
         $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048',
         ]);

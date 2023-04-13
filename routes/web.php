@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/game', [ImageController::class, 'getImages']);
-    Route::post('/upload-image', [ImageController::class, 'saveImage']);
+    Route::post('/upload-image', [ImageController::class, 'store']);
     Route::get('/play-game', JoinToGameController::class);
     Route::post('/send-word', SendWordController::class);
 });
