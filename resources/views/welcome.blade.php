@@ -20,7 +20,7 @@
                     GWAP
                 </p>
                 @if (Route::has('login'))
-                    <div class="p-6 text-right">
+                    <div class="p-6 text-center">
                         @auth
                             @switch($role = Auth::user()->role)
                                 @case('admin')
