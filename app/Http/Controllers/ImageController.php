@@ -43,6 +43,6 @@ class ImageController extends Controller
             return view('game', ['images' => $images]);
         }
 
-        return 'There are not enough images in server to play a game';
+        return 'There are not enough images on the server to play a game';
     }
 }
