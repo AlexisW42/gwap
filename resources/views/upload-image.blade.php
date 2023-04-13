@@ -1,7 +1,7 @@
 @extends('layouts.game')
 
 @section('content')
-
+    <div class="p-6 flex flex-col items-center text-gray-900 content-center">
     <form method="POST" enctype="multipart/form-data">
         @csrf
         <label for="uploadImage">
@@ -12,5 +12,5 @@
                 {{ __('send') }}
         </x-primary-button>
     </form>
-
+    </div>
 @endsection

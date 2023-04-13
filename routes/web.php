@@ -36,7 +36,7 @@ Route::get('/dashboard', function () {
         default:
         return view('dashboard');
     }
-    
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -56,3 +56,4 @@ Route::get('/upload-image', function () {
     abort_if(Auth::user()->role != 'admin', 403);
     return view('upload-image');
 });
+Route::get('/list-images', [ImageController::class, 'index']);

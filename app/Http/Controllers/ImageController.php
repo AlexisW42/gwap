@@ -3,12 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Word;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
-    public function saveImage(Request $request)
-    {
+    public function index(){
+        abort_if(Auth::user()->role != 'admin', 403);
+
+        $images = Image::get();
+        $imagesAndWords=[];
+        foreach ($images as $image){
+            $temp = [];
+            $words = Word::where('pathImage', $image->path)->get();
+            foreach ($words as $word){
+                $temp = [...$temp, $word->word];
+            }
+            $imagesAndWords = [...$imagesAndWords, "$image->path"=>[...$temp]];
+        }
+
+        return view('list-images', ['images'=>$imagesAndWords]);
+    }
+    public function saveImage(Request $request) {
         $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048',
         ]);
