@@ -25,7 +25,7 @@ npm install
 ```
 You need make a copy of .env.example, rename as .env and generate the key:
 ```bash
-php artisan generate:key
+php artisan key:generate
 ```
 Generate the database:
 ```bash
