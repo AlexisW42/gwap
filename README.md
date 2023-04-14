@@ -43,12 +43,16 @@ php artisan storage:link
 ```
 
 ## Running
-You need to have 2 servers running, therefore, you need 2 consoles:</br>
-one with:
+You need to have 3 servers running, therefore, you need 3 consoles:</br>
+one with the server for laravel:
 ```bash
 php artisan serve
 ```
-and the other with:
+other with a developer npm server:
 ```bash
 npm run dev 
+```
+and the last will be the server to broadcast events:
+```bash
+php artisan websockets:serve 
 ```
