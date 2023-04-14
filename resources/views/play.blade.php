@@ -117,7 +117,7 @@
 
         function end(){
             //url to redirect at the end of game
-            window.location.href = '{{url('/player_dashboard')}}';
+            window.location.href = '{{url("/endgame/$game->id")}}';
         }
     </script>
     @endif

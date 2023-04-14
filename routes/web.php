@@ -4,6 +4,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\JoinToGameController;
+use \App\Http\Controllers\GameController;
 use \App\Http\Controllers\SendWordController;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/game', [ImageController::class, 'getImages']);
     Route::post('/upload-image', [ImageController::class, 'store']);
     Route::get('/play-game', JoinToGameController::class);
+    Route::get('/endgame/{game}', [GameController::class, 'show']);
     Route::post('/send-word', SendWordController::class);
 });
 
