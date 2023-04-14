@@ -38,9 +38,6 @@
     <script>
         let endDate = new Date('{{$game->endTime}}')
         let myDate = new Date()
-        console.log(myDate)
-        console.log(endDate)
-        console.log(Math.floor((endDate-myDate)/1000))
 
         const images = ['{{$game->pathImage1}}',
             '{{$game->pathImage2}}',
