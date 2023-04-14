@@ -52,7 +52,7 @@ other with a developer npm server:
 ```bash
 npm run dev 
 ```
-and the last will be the server to broadcast events:
+and the last will be the server to broadcast events through websockets using laravel websockets:
 ```bash
 php artisan websockets:serve 
 ```
