@@ -66,7 +66,7 @@
             }else if(time<=0){
                 clearTimeout(timeoutID);
 				time=0; str='0:00'
-                end();
+                setTimeout(end, 2000);
 			}
             $('#timer').text(str);
         }
@@ -119,6 +119,16 @@
             //url to redirect at the end of game
             window.location.href = '{{url("/endgame/$game->id")}}';
         }
+    </script>
+    @elseif($game->endTime == null)
+    <script>
+        window.onload=function(){
+        Echo.join('game.{{$game->id}}').listen('StartGame', (e) => {
+            console.log("hello");
+            console.log(e);
+            location.reload();
+        })
+    }
     </script>
     @endif
 @endsection

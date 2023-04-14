@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Image;
+use App\Events\StartGame;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,8 +43,9 @@ class JoinToGameController extends Controller
                 $game->username2 = Auth::user()->username;
             } else {
                 $game->username3 = Auth::user()->username;
-                $timestamp = mktime(date("H"), date("i")+3, date("s")+2, date("m") , date("d"), date("Y"));
+                $timestamp = mktime(date("H"), date("i")+3, date("s"), date("m") , date("d"), date("Y"));
                 $game->endTime = date("Y-m-d H:i:s", $timestamp);
+                event(new StartGame($game->id));
             }
             $game->save();
         }elseif ($this->isAlreadyInGame($games[0])){
